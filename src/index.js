@@ -18,15 +18,15 @@ function inputHandler(event) {
     console.log(handleCountry);
 
     fetchCountries(handleCountry).then(countries => {
-        
-        if (handleCountry !== "" && countries.length >= 2 && countries.length <= 10) {
-            buildCountriesList(countries);
-        } else if (countries.length === 1) {
-            buildCountryInfo(countries);
-        } else {
-            Notify.info(`Too many matches found. Please enter a more specific name.`);
+        while (handleCountry !== "" && countries !== undefined) {
+            if (countries.length >= 2 && countries.length <= 10) {
+                buildCountriesList(countries);
+            } else if (countries.length === 1) {
+                buildCountryInfo(countries);
+            } else {
+                Notify.info(`Too many matches found. Please enter a more specific name.`);
+            };
         };
-        
     }).catch(error => {
         console.log(error);
             Notify.failure('Oops, there is no country with that name');
