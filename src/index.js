@@ -18,7 +18,7 @@ function inputHandler(event) {
     console.log(handleCountry);
 
     fetchCountries(handleCountry).then(countries => {
-        while (handleCountry !== "" && countries !== undefined) {
+        if (handleCountry !== "" && countries !== undefined) {
             if (countries.length >= 2 && countries.length <= 10) {
                 buildCountriesList(countries);
             } else if (countries.length === 1) {
