@@ -15,17 +15,18 @@ function inputHandler(event) {
     clearHTML(); 
 
     const handleCountry = event.target.value.trim();
-    console.log(handleCountry);
+    if (handleCountry === "") {
+      return
+    };
 
-    fetchCountries(handleCountry).then(countries => {
-        if (handleCountry !== "" && countries !== undefined) {
+    fetchCountries(handleCountry).then(countries => {   
+        
             if (countries.length >= 2 && countries.length <= 10) {
                 buildCountriesList(countries);
             } else if (countries.length === 1) {
                 buildCountryInfo(countries);
             } else {
-                Notify.info(`Too many matches found. Please enter a more specific name.`);
-            };
+                Notify.info(`Too many matches found. Please enter a more specific name.`);            
         };
     }).catch(error => {
         console.log(error);
