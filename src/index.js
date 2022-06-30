@@ -15,12 +15,11 @@ function inputHandler(event) {
     clearHTML(); 
 
     const handleCountry = event.target.value.trim();
-    if (handleCountry === "") {
+    if (handleCountry === "") {        
       return
     };
 
-    fetchCountries(handleCountry).then(countries => {   
-        
+    fetchCountries(handleCountry).then(countries => {               
             if (countries.length >= 2 && countries.length <= 10) {
                 buildCountriesList(countries);
             } else if (countries.length === 1) {
